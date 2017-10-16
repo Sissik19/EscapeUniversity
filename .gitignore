@@ -1,0 +1,15 @@
+# Intellij files
+.idea/*
+*.iml
+*.iws
+
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# Others
+*.png
+out/
+*.MF
