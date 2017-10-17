@@ -2,7 +2,9 @@ package Instances;
 
 import Commands.Command;
 
-public class Key {
+import java.io.Serializable;
+
+public class Key implements Serializable{
 
     private String couleur;
     public Key(String couleur){

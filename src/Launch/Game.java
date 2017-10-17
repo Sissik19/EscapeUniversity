@@ -5,9 +5,10 @@ import Commands.*;
 import RessourceEnum.*;
 import Instances.*;
 
+import java.io.*;
 import java.util.*;
 
-public class Game {
+public class Game implements Serializable{
 
     /**
      *  This class is the main class, text based adventure game.  Users
@@ -22,30 +23,30 @@ public class Game {
      *  executes the commands that the parser returns.
      *
      */
-
-    private Parser parser;
-    private Parser parser2;
+    private static Game game;
+    transient private Parser parser;
+    transient private Parser parser2;
     private Room currentRoom;
     private Inventory inventory;
-    private String north = Direction.NORTH.toString();
-    private String south = Direction.SOUTH.toString();
-    private String west = Direction.WEST.toString();
-    private String east = Direction.EAST.toString();
-    private String up = Direction.UP.toString();
-    private String down = Direction.DOWN.toString();
-    private String close = StateDoor.CLOSE.toString();
-    private String open = StateDoor.OPEN.toString();
-    private String dclose = StateDoor.DCLOSE.toString();
-    private String hide = StateDoor.HIDE.toString();
-    private String code = StateDoor.CODE.toString();
+    transient private String north = Direction.NORTH.toString();
+    transient private String south = Direction.SOUTH.toString();
+    transient private String west = Direction.WEST.toString();
+    transient private String east = Direction.EAST.toString();
+    transient private String up = Direction.UP.toString();
+    transient private String down = Direction.DOWN.toString();
+    transient private String close = StateDoor.CLOSE.toString();
+    transient private String open = StateDoor.OPEN.toString();
+    transient private String dclose = StateDoor.DCLOSE.toString();
+    transient private String hide = StateDoor.HIDE.toString();
+    transient private String code = StateDoor.CODE.toString();
     private Key orange, pink, red, blue, grey, black, yellow,code1,code2,white, violet;
     public Room hall, theater, backTheater, downCorridor, musicClass, pub, computingLab, reserve,
             balcony, classOne, classTwo, suspendedGarden, upCorridor, secretariat, directory, upHall,
             attic, atticCorridor, secretRoom1, secretRoom2, outside;
     private static String language;
     private static String country;
-    private static Locale currentLocale;
-    public static ResourceBundle messages;
+    transient private static Locale currentLocale;
+    transient public static ResourceBundle messages;
     /**
      * Create the game and initialise its internal map.
      */
@@ -55,6 +56,27 @@ public class Game {
         createRooms();
         parser = new Parser();
         parser2 = new Parser();
+    }
+
+    private void save(){
+        try {
+            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("save.dat"));
+            oos.writeObject(game);
+            oos.close();
+        } catch(Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    private void load(){
+        try {
+            ObjectInputStream ois = new ObjectInputStream(new FileInputStream("save.dat"));
+            game = (Game) ois.readObject();
+            ois.close();
+        }
+        catch(Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     private void createKey(){
@@ -232,6 +254,10 @@ public class Game {
             unlock(command);
         else if(CommandWord.CODE.equals(commandWords))
             code(command);
+        else if(CommandWord.SAVE.equals(commandWords))
+            save();
+        else if (CommandWord.LOAD.equals(commandWords))
+            load();
         return wantToQuit;
     }
 
@@ -470,7 +496,7 @@ public class Game {
 
     }
 
-    private static void setLanguage(){
+    public static void setLanguage(){
         int i = 1;
         Scanner sc = new Scanner(System.in);
         while (i == 1) {
@@ -497,8 +523,9 @@ public class Game {
 
     public static void main(String[] args) {
         setLanguage();
-        Game jeu = new Game();
-        jeu.play();
+
+        game = new Game();
+        game.play();
     }
 
 }

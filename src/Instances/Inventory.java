@@ -2,9 +2,11 @@ package Instances;
 
 import Commands.Command;
 import RessourceEnum.Text;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Inventory {
+public class Inventory implements Serializable{
     ArrayList<Key> bag;
 
     public Inventory(){

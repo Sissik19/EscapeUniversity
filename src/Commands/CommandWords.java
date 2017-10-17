@@ -3,6 +3,8 @@ package Commands;
 import RessourceEnum.CommandWord;
 import RessourceEnum.Text;
 
+import java.io.Serializable;
+
 /**
  * This class is part of the "World of Advenrture" application. 
  *
@@ -11,7 +13,7 @@ import RessourceEnum.Text;
  *
  */
 
-public class CommandWords {
+public class CommandWords{
 
     /**
      * Constructor - initialise the command words.

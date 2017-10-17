@@ -2,6 +2,7 @@ package Commands;
 
 import RessourceEnum.CommandWord;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
 /**
@@ -16,7 +17,7 @@ import java.util.Scanner;
  * the known commands, and if the input is not one of the known commands, it
  * returns a command object that is marked as an unknown command.
  */
-public class Parser {
+public class Parser{
     private CommandWords commands;  // holds all valid command words
     private Scanner reader;         // source of command input
 

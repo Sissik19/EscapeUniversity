@@ -1,6 +1,8 @@
 package Instances;
 
-public class Door {
+import java.io.Serializable;
+
+public class Door implements Serializable{
 
     private String direction;
     private Room neighbor;

@@ -3,6 +3,8 @@ package Instances;
 import RessourceEnum.StateDoor;
 import RessourceEnum.Text;
 import Commands.Command;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
@@ -15,7 +17,7 @@ import java.util.ArrayList;
  * to the neighboring room, or null if there is no exit in that direction.
  *
  */
-public class Room {
+public class Room implements Serializable{
 
     private String description;
     private Key key;
@@ -151,6 +153,10 @@ public class Room {
 
     public void setKey(){
         key = null;
+    }
+
+    public ArrayList<Door> getDoors(){
+        return doors;
     }
 
 }
