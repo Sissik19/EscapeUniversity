@@ -1,29 +1,40 @@
 package RessourceEnum;
 import Launch.Game;
 
-
 public enum DescriptionRoom {
     OUTSIDE(Game.messages.getString("outside")),
+    CORRIDOR(Game.messages.getString("corridor")),
     HALL(Game.messages.getString("hall")),
     THEATER(Game.messages.getString("theater")),
     BACKTHEATER(Game.messages.getString("backtheater")),
-    DOWNCORRIDOR(Game.messages.getString("downcorridor")),
     MUSICCLASS(Game.messages.getString("musicclass")),
     PUB(Game.messages.getString("pub")),
     COMPUTINGLAB(Game.messages.getString("computinglab")),
-    RESERVE(Game.messages.getString("reserve")),
     BALCONY(Game.messages.getString("balcony")),
-    CLASSONE(Game.messages.getString("classone")),
-    CLASSTWO(Game.messages.getString("classtwo")),
-    SUSPENDEDGARDEN(Game.messages.getString("suspendedgarden")),
-    UPCORRIDOR(Game.messages.getString("upcorridor")),
     SECRETARIAT(Game.messages.getString("secretariat")),
     DIRECTORY(Game.messages.getString("directory")),
-    UPHALL(Game.messages.getString("uphall")),
     ATTIC(Game.messages.getString("attic")),
-    ATTICCORRIDOR(Game.messages.getString("atticcorridor")),
-    SECRETROOM1(Game.messages.getString("secretroom1")),
-    SECRETROOM2(Game.messages.getString("secretroom2"));
+    SECRETROOM(Game.messages.getString("secretroom")),
+    PUBRESERVE(Game.messages.getString("pubReserve")),
+    BOTANICCLASS(Game.messages.getString("botanicClass")),
+    THEATERCLASS(Game.messages.getString("theaterClass")),
+    VERANDA(Game.messages.getString("veranda")),
+    BOOKSHELF(Game.messages.getString("bookshelf")),
+    DIRECBOOKSHELF(Game.messages.getString("direcBookshelf")),
+    RESTAURANT(Game.messages.getString("restaurant")),
+    KITCHEN(Game.messages.getString("kitchen")),
+    MEETING(Game.messages.getString("meeting")),
+    GARDEN(Game.messages.getString("garden")),
+    DIRECLAB(Game.messages.getString("direcLab")),
+    ELECBAY(Game.messages.getString("elecBay")),
+    AMPHI(Game.messages.getString("amphi")),
+    PRINTER(Game.messages.getString("printer")),
+    PROFESSOR(Game.messages.getString("professor")),
+    STOCK(Game.messages.getString("stock")),
+    STOCKSC(Game.messages.getString("stockSC")),
+    ATTICUP(Game.messages.getString("atticUp")),
+    UPGARDEN(Game.messages.getString("upGarden")),
+    CLASS(Game.messages.getString("class"));
 
 
     private String mot ="";

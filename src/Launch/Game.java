@@ -22,7 +22,7 @@ public class Game {
      *  executes the commands that the parser returns.
      *
      */
-
+    private static Game jeu;
     private Parser parser;
     private Parser parser2;
     private Room currentRoom;
@@ -39,9 +39,12 @@ public class Game {
     private String hide = StateDoor.HIDE.toString();
     private String code = StateDoor.CODE.toString();
     private Key orange, pink, red, blue, grey, black, yellow,code1,code2,white, violet;
-    public Room hall, theater, backTheater, downCorridor, musicClass, pub, computingLab, reserve,
-            balcony, classOne, classTwo, suspendedGarden, upCorridor, secretariat, directory, upHall,
-            attic, atticCorridor, secretRoom1, secretRoom2, outside;
+    public Room hall1,corridor1,corridor2,corridor3,corridor4,corridor5,corridor6,corridor7,corridor8,corridor9,hall2,
+            garden,veranda1, veranda2, botanicClass, pubReserve, theaterClass, bookshelf, direcBookshelf, meeting1, meeting2,
+            restaurant, kitchen, hall3, hall4, elecBay, directLab, amphi, printer, professor, upGarden,goAttic, stock1,
+            stock2, stock3, corridor10, corridor11, class1, class2, class3, class4, class5,
+            theater, backTheater, musicClass, pub, computingLab, balcony, secretariat, directory, attic,
+            secretRoom, outside;
     private static String language;
     private static String country;
     private static Locale currentLocale;
@@ -81,94 +84,238 @@ public class Game {
 
 
         // create the rooms
-        outside = new Room(DescriptionRoom.OUTSIDE.toString(), null);
-        hall = new Room(DescriptionRoom.HALL.toString(),null);
-        theater = new Room(DescriptionRoom.THEATER.toString(), null);
-        backTheater = new Room(DescriptionRoom.BACKTHEATER.toString(), black);
-        pub = new Room(DescriptionRoom.PUB.toString(), orange);
-        musicClass = new Room(DescriptionRoom.MUSICCLASS.toString(), code1);
-        downCorridor = new Room(DescriptionRoom.DOWNCORRIDOR.toString(), null);
-        computingLab = new Room(DescriptionRoom.COMPUTINGLAB.toString(), null);
-        reserve = new Room(DescriptionRoom.RESERVE.toString(), red);
+        outside = new Room(DescriptionRoom.OUTSIDE.toString());
+        hall1 = new Room(DescriptionRoom.HALL.toString());
+        hall2 = new Room(DescriptionRoom.HALL.toString());
+        corridor1 = new Room(DescriptionRoom.CORRIDOR.toString());
+        corridor2 = new Room(DescriptionRoom.CORRIDOR.toString());
+        corridor3 = new Room(DescriptionRoom.CORRIDOR.toString());
+        corridor4 = new Room(DescriptionRoom.CORRIDOR.toString());
+        corridor5 = new Room(DescriptionRoom.CORRIDOR.toString());
+        corridor6 = new Room(DescriptionRoom.CORRIDOR.toString());
+        theater = new Room(DescriptionRoom.THEATER.toString());
+        backTheater = new Room(DescriptionRoom.BACKTHEATER.toString());
+        pub = new Room(DescriptionRoom.PUB.toString());
+        pubReserve = new Room(DescriptionRoom.PUBRESERVE.toString());
+        botanicClass = new Room(DescriptionRoom.BOTANICCLASS.toString());
+        veranda1 = new Room(DescriptionRoom.VERANDA.toString());
+        veranda2 = new Room(DescriptionRoom.VERANDA.toString());
+        theaterClass = new Room(DescriptionRoom.THEATERCLASS.toString());
+        bookshelf = new Room(DescriptionRoom.BOOKSHELF.toString());
+        direcBookshelf = new Room(DescriptionRoom.DIRECBOOKSHELF.toString());
+        restaurant = new Room(DescriptionRoom.RESTAURANT.toString());
+        kitchen = new Room(DescriptionRoom.KITCHEN.toString());
+        meeting1 = new Room(DescriptionRoom.MEETING.toString());
+        meeting2 = new Room(DescriptionRoom.MEETING.toString());
+        garden = new Room(DescriptionRoom.GARDEN.toString());
+        musicClass = new Room(DescriptionRoom.MUSICCLASS.toString());
+        class1 = new Room(DescriptionRoom.CLASS.toString());
 
-        upHall = new Room(DescriptionRoom.UPHALL.toString(), null);
-        balcony = new Room(DescriptionRoom.BALCONY.toString(), blue);
-        suspendedGarden = new Room(DescriptionRoom.SUSPENDEDGARDEN.toString(), null);
-        classOne = new Room(DescriptionRoom.CLASSONE.toString(), code2);
-        classTwo = new Room(DescriptionRoom.CLASSTWO.toString(), grey);
-        upCorridor = new Room(DescriptionRoom.UPCORRIDOR.toString(), null);
-        secretariat = new Room(DescriptionRoom.SECRETARIAT.toString(),white);
-        directory = new Room(DescriptionRoom.DIRECTORY.toString(), violet);
+        balcony = new Room(DescriptionRoom.BALCONY.toString());
+        secretariat = new Room(DescriptionRoom.SECRETARIAT.toString());
+        directory = new Room(DescriptionRoom.DIRECTORY.toString());
+        corridor7 = new Room(DescriptionRoom.CORRIDOR.toString());
+        corridor8 = new Room(DescriptionRoom.CORRIDOR.toString());
+        corridor9 = new Room(DescriptionRoom.CORRIDOR.toString());
+        hall3 = new Room(DescriptionRoom.HALL.toString());
+        hall4 = new Room(DescriptionRoom.HALL.toString());
+        directLab = new Room(DescriptionRoom.DIRECLAB.toString());
+        upGarden = new Room(DescriptionRoom.UPGARDEN.toString());
+        elecBay = new Room(DescriptionRoom.ELECBAY.toString());
+        amphi = new Room(DescriptionRoom.AMPHI.toString());
+        printer = new Room(DescriptionRoom.PRINTER.toString());
+        professor = new Room(DescriptionRoom.PROFESSOR.toString());
+        computingLab = new Room(DescriptionRoom.COMPUTINGLAB.toString());
+        goAttic = new Room(DescriptionRoom.ATTICUP.toString());
+        class2 = new Room(DescriptionRoom.CLASS.toString());
+        class3 = new Room(DescriptionRoom.CLASS.toString());
+        class4 = new Room(DescriptionRoom.CLASS.toString());
+        class5 = new Room(DescriptionRoom.CLASS.toString());
+
 
         attic = new Room(DescriptionRoom.ATTIC.toString(), null);
-        secretRoom1 = new Room(DescriptionRoom.SECRETROOM1.toString(), yellow);
-        secretRoom2 = new Room(DescriptionRoom.SECRETROOM2.toString(), pink);
-        atticCorridor = new Room(DescriptionRoom.ATTICCORRIDOR.toString(), null);
+        secretRoom = new Room(DescriptionRoom.SECRETROOM.toString(), yellow);
+        corridor10 = new Room(DescriptionRoom.CORRIDOR.toString());
+        corridor11 = new Room(DescriptionRoom.CORRIDOR.toString());
+        stock1 = new Room(DescriptionRoom.STOCK.toString());
+        stock2 = new Room(DescriptionRoom.STOCK.toString());
+        stock3 = new Room(DescriptionRoom.STOCKSC.toString());
+
 
 
         // initialise room exits
-        hall.setExit(west, pub, close, black);
-        hall.setExit(south, downCorridor);
-        hall.setExit(east, theater, close, grey);
-        hall.setExit(north, outside, dclose, yellow, pink);
-        hall.setExit(up, upHall);
+        hall1.setExit(north,outside);
+        hall1.setExit(south,corridor1);
+        hall1.setExit(west,pub);
+        hall1.setExit(east,corridor6);
+        hall1.setExit(up,hall3);
 
-        theater.setExit(west, hall);
+        corridor1.setExit(north, hall1);
+        corridor1.setExit(south, corridor2);
+        corridor1.setExit(west, restaurant);
+        corridor1.setExit(east, corridor3);
+
+        corridor2.setExit(north, corridor1);
+        corridor2.setExit(south, meeting2);
+        corridor2.setExit(west, meeting1);
+        corridor2.setExit(east, corridor3);
+
+        corridor3.setExit(north, garden);
+        corridor3.setExit(south, musicClass);
+        corridor3.setExit(west, corridor2);
+        corridor3.setExit(east, hall2);
+
+        corridor4.setExit(north, corridor5);
+        corridor4.setExit(south, hall2);
+        corridor4.setExit(west, garden);
+        corridor4.setExit(east, theaterClass);
+
+        corridor5.setExit(north, veranda1);
+        corridor5.setExit(south, corridor4);
+        corridor5.setExit(west, corridor6);
+        corridor5.setExit(east, theater);
+
+        corridor6.setExit(north, botanicClass);
+        corridor6.setExit(south, garden);
+        corridor6.setExit(west, hall1);
+        corridor6.setExit(east, corridor5);
+
+        corridor7.setExit(north, hall3);
+        corridor7.setExit(south, corridor8);
+        corridor7.setExit(west, amphi);
+        corridor7.setExit(east, upGarden);
+
+        corridor8.setExit(north, corridor7);
+        corridor8.setExit(south, class2);
+        corridor8.setExit(west, secretariat);
+        corridor8.setExit(east, corridor9);
+
+        corridor9.setExit(north, upGarden);
+        corridor9.setExit(south, class3);
+        corridor9.setExit(west, corridor8);
+        corridor9.setExit(east, hall4);
+
+        hall2.setExit(north, corridor4);
+        hall2.setExit(south, class1);
+        hall2.setExit(west, corridor3);
+        hall2.setExit(east, bookshelf);
+        hall2.setExit(up, hall4);
+
+        garden.setExit(north, corridor6);
+        garden.setExit(south, corridor3);
+        garden.setExit(west, corridor1);
+        garden.setExit(east, corridor4);
+        garden.setExit(up, upGarden);
+
+        veranda1.setExit(south, corridor3);
+        veranda1.setExit(east, veranda2);
+        veranda1.setExit(west, botanicClass);
+
+        veranda2.setExit(west, veranda1);
+
+        botanicClass.setExit(east, veranda1);
+        botanicClass.setExit(south, corridor6);
+
+        pubReserve.setExit(east, pub);
+
+        theaterClass.setExit(west, corridor4);
+        theaterClass.setExit(north, theater);
+
+        bookshelf.setExit(west, hall2);
+        bookshelf.setExit(south, direcBookshelf);
+
+        meeting1.setExit(east, corridor2);
+
+        meeting2.setExit(north, corridor2);
+
+        restaurant.setExit(west, kitchen);
+        restaurant.setExit(east, corridor1);
+
+        kitchen.setExit(east, restaurant);
+
+        hall3.setExit(west, goAttic);
+        hall3.setExit(east, class5);
+        hall3.setExit(south, corridor7);
+        hall3.setExit(down, hall2);
+
+        hall4.setExit(north, computingLab);
+        hall4.setExit(south, printer);
+        hall4.setExit(west, corridor9);
+        hall4.setExit(east, class4);
+        hall4.setExit(down, hall2);
+
+        elecBay.setExit(west, computingLab);
+
+        directLab.setExit(south, computingLab);
+
+        amphi.setExit(east, corridor7);
+
+        printer.setExit(north, hall4);
+
+        professor.setExit(east, printer);
+
+        upGarden.setExit(down, garden);
+        upGarden.setExit(south, corridor9);
+        upGarden.setExit(west, corridor7);
+
+        goAttic.setExit(east, hall3);
+        goAttic.setExit(up, attic);
+
+        stock1.setExit(north, corridor10);
+
+        stock2.setExit(north, corridor11);
+
+        stock3.setExit(west, corridor11);
+
+        corridor10.setExit(south, stock1);
+        corridor10.setExit(west, attic);
+        corridor10.setExit(east, corridor11);
+
+        corridor11.setExit(south, stock2);
+        corridor11.setExit(west, corridor10);
+        corridor11.setExit(east, stock3);
+
+        class1.setExit(north, hall2);
+
+        class2.setExit(north, corridor8);
+
+        class3.setExit(north, corridor9);
+
+        class4.setExit(west, hall4);
+
+        class5.setExit(west, hall3);
+
+        theater.setExit(west, corridor5);
+        theater.setExit(east, backTheater);
+        theater.setExit(south, theaterClass);
         theater.setExit(up, balcony);
-        theater.setExit(east, backTheater, code,code2);
 
         backTheater.setExit(west, theater);
 
-        downCorridor.setExit(north, hall);
-        downCorridor.setExit(west, musicClass, close, blue);
-        downCorridor.setExit(east, computingLab);
+        musicClass.setExit(north, corridor3);
 
-        computingLab.setExit(west, downCorridor);
-        computingLab.setExit(east, reserve, code, code1);
+        pub.setExit(east, hall1);
+        pub.setExit(west, pubReserve);
 
-        musicClass.setExit(east, downCorridor);
-
-        reserve.setExit(west, computingLab);
-
-        pub.setExit(east, hall);
-
-        outside.setExit(south, hall);
-
-        suspendedGarden.setExit(south, upHall);
-
-        upHall.setExit(north, suspendedGarden);
-        upHall.setExit(west, classOne);
-        upHall.setExit(south, upCorridor);
-        upHall.setExit(up, attic);
-        upHall.setExit(down, hall);
-
-        classOne.setExit(east, upHall);
+        computingLab.setExit(north, directLab);
+        computingLab.setExit(south, hall4);
+        computingLab.setExit(east, elecBay);
 
         balcony.setExit(down, theater);
 
-        upCorridor.setExit(north, upHall);
-        upCorridor.setExit(west, classTwo);
-        upCorridor.setExit(east, secretariat);
+        secretariat.setExit(east, corridor8);
+        secretariat.setExit(south, directory);
 
-        classTwo.setExit(east, upCorridor);
+        directory.setExit(north, secretariat);
 
-        secretariat.setExit(east, directory, dclose, orange, white);
-        secretariat.setExit(west, upCorridor);
+        attic.setExit(down, goAttic);
+        attic.setExit(east, corridor10);
 
-        directory.setExit(west, secretariat);
+        secretRoom.setExit(north, stock3);
 
-        attic.setExit(down, upHall);
-        attic.setExit(west, atticCorridor);
+        outside.setExit(south, hall1);
 
-        atticCorridor.setExit(north, secretRoom1, hide,violet);
-        atticCorridor.setExit(south, secretRoom2, hide, red);
-        atticCorridor.setExit(east, attic);
-
-        secretRoom1.setExit(south, atticCorridor);
-
-        secretRoom2.setExit(north, atticCorridor);
-
-        currentRoom = hall;  // start game outside
+        currentRoom = garden;  // start game outside
     }
 
     /**
@@ -497,7 +644,7 @@ public class Game {
 
     public static void main(String[] args) {
         setLanguage();
-        Game jeu = new Game();
+        jeu = new Game();
         jeu.play();
     }
 

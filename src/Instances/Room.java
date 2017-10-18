@@ -20,6 +20,7 @@ public class Room {
     private String description;
     private Key key;
     private ArrayList<Door> doors;
+    private boolean move;
 
     /**
      * Create a room described "description". Initially, it has
@@ -27,10 +28,19 @@ public class Room {
      * "an open court yard".
      * @param description The room's description.
      */
+
+    public Room(String description)    {
+        this.description = description;
+        this.key = null;
+        doors = new ArrayList<>();
+        this.move = false;
+    }
+
     public Room(String description,Key key)    {
         this.description = description;
         this.key = key;
         doors = new ArrayList<>();
+        this.move = false;
     }
 
     public Door getDoor(String direction){

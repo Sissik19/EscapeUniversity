@@ -8,7 +8,9 @@ public enum Direction {
     SOUTH(Game.messages.getString("south")),
     NORTH(Game.messages.getString("north")),
     UP(Game.messages.getString("up")),
-    DOWN(Game.messages.getString("down"));
+    DOWN(Game.messages.getString("down")),
+    FORWARD(Game.messages.getString("forward")),
+    BACK(Game.messages.getString("back"));
 
     private String mot ="";
 
