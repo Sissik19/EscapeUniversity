@@ -2,6 +2,14 @@ package RessourceEnum;
 import Launch.Game;
 
 public enum KeyCode {
+    CODE1(alea()),
+    CODE2(alea()),
+    CODE3(alea()),
+    CODE4(alea()),
+    CODE5(alea()),
+    CODE6(alea()),
+    GREEN(Game.messages.getString("green")),
+    BROWN(Game.messages.getString("brown")),
     ORANGE(Game.messages.getString("orange")),
     PINK(Game.messages.getString("pink")),
     RED(Game.messages.getString("red")),
@@ -9,10 +17,10 @@ public enum KeyCode {
     GREY(Game.messages.getString("grey")),
     BLACK(Game.messages.getString("black")),
     YELLOW(Game.messages.getString("yellow")),
-    CODE1(alea()),
-    CODE2(alea()),
     WHITE(Game.messages.getString("white")),
-    VIOLET(Game.messages.getString("violet"));
+    VIOLET(Game.messages.getString("violet")),
+    SQUARE(Game.messages.getString("square")),
+    CORAL(Game.messages.getString("coral"));
 
 
     private String mot ="";

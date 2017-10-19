@@ -38,7 +38,7 @@ public class Game {
     private String dclose = StateDoor.DCLOSE.toString();
     private String hide = StateDoor.HIDE.toString();
     private String code = StateDoor.CODE.toString();
-    private Key orange, pink, red, blue, grey, black, yellow,code1,code2,white, violet;
+    private Key orange, pink, red, blue, grey, black, yellow,code1,code2, code3, code4, code5, code6, green, brown,white, violet, coral, square;
     public Room hall1,corridor1,corridor2,corridor3,corridor4,corridor5,corridor6,corridor7,corridor8,corridor9,hall2,
             garden,veranda1, veranda2, botanicClass, pubReserve, theaterClass, bookshelf, direcBookshelf, meeting1, meeting2,
             restaurant, kitchen, hall3, hall4, elecBay, directLab, amphi, printer, professor, upGarden,goAttic, stock1,
@@ -70,8 +70,17 @@ public class Game {
         yellow = new Key(KeyCode.YELLOW.toString());
         code1 = new Key(KeyCode.CODE1.toString());
         code2 = new Key(KeyCode.CODE2.toString());
+        code3 = new Key(KeyCode.CODE3.toString());
+        code4 = new Key(KeyCode.CODE4.toString());
+        code5 = new Key(KeyCode.CODE5.toString());
+        code6 = new Key(KeyCode.CODE6.toString());
         white = new Key(KeyCode.WHITE.toString());
         violet = new Key(KeyCode.VIOLET.toString());
+        green = new Key(KeyCode.GREEN.toString());
+        brown = new Key(KeyCode.BROWN.toString());
+        coral = new Key(KeyCode.CORAL.toString());
+        square = new Key(KeyCode.SQUARE.toString());
+
 
     }
     private void createInventory(){
@@ -94,57 +103,57 @@ public class Game {
         corridor5 = new Room(DescriptionRoom.CORRIDOR.toString());
         corridor6 = new Room(DescriptionRoom.CORRIDOR.toString());
         theater = new Room(DescriptionRoom.THEATER.toString());
-        backTheater = new Room(DescriptionRoom.BACKTHEATER.toString());
-        pub = new Room(DescriptionRoom.PUB.toString());
-        pubReserve = new Room(DescriptionRoom.PUBRESERVE.toString());
-        botanicClass = new Room(DescriptionRoom.BOTANICCLASS.toString());
+        backTheater = new Room(DescriptionRoom.BACKTHEATER.toString(), violet);
+        pub = new Room(DescriptionRoom.PUB.toString(), square);
+        pubReserve = new Room(DescriptionRoom.PUBRESERVE.toString(), orange);
+        botanicClass = new Room(DescriptionRoom.BOTANICCLASS.toString(), yellow);
         veranda1 = new Room(DescriptionRoom.VERANDA.toString());
-        veranda2 = new Room(DescriptionRoom.VERANDA.toString());
-        theaterClass = new Room(DescriptionRoom.THEATERCLASS.toString());
+        veranda2 = new Room(DescriptionRoom.VERANDA.toString(), code4);
+        theaterClass = new Room(DescriptionRoom.THEATERCLASS.toString(), blue);
         bookshelf = new Room(DescriptionRoom.BOOKSHELF.toString());
-        direcBookshelf = new Room(DescriptionRoom.DIRECBOOKSHELF.toString());
+        direcBookshelf = new Room(DescriptionRoom.DIRECBOOKSHELF.toString(), code1);
         restaurant = new Room(DescriptionRoom.RESTAURANT.toString());
-        kitchen = new Room(DescriptionRoom.KITCHEN.toString());
-        meeting1 = new Room(DescriptionRoom.MEETING.toString());
+        kitchen = new Room(DescriptionRoom.KITCHEN.toString(), code3);
+        meeting1 = new Room(DescriptionRoom.MEETING.toString(), white);
         meeting2 = new Room(DescriptionRoom.MEETING.toString());
         garden = new Room(DescriptionRoom.GARDEN.toString());
-        musicClass = new Room(DescriptionRoom.MUSICCLASS.toString());
+        musicClass = new Room(DescriptionRoom.MUSICCLASS.toString(), brown);
         class1 = new Room(DescriptionRoom.CLASS.toString());
 
         balcony = new Room(DescriptionRoom.BALCONY.toString());
         secretariat = new Room(DescriptionRoom.SECRETARIAT.toString());
-        directory = new Room(DescriptionRoom.DIRECTORY.toString());
+        directory = new Room(DescriptionRoom.DIRECTORY.toString(),green);
         corridor7 = new Room(DescriptionRoom.CORRIDOR.toString());
         corridor8 = new Room(DescriptionRoom.CORRIDOR.toString());
         corridor9 = new Room(DescriptionRoom.CORRIDOR.toString());
         hall3 = new Room(DescriptionRoom.HALL.toString());
         hall4 = new Room(DescriptionRoom.HALL.toString());
-        directLab = new Room(DescriptionRoom.DIRECLAB.toString());
+        directLab = new Room(DescriptionRoom.DIRECLAB.toString(), code2);
         upGarden = new Room(DescriptionRoom.UPGARDEN.toString());
         elecBay = new Room(DescriptionRoom.ELECBAY.toString());
-        amphi = new Room(DescriptionRoom.AMPHI.toString());
-        printer = new Room(DescriptionRoom.PRINTER.toString());
-        professor = new Room(DescriptionRoom.PROFESSOR.toString());
+        amphi = new Room(DescriptionRoom.AMPHI.toString(), coral);
+        printer = new Room(DescriptionRoom.PRINTER.toString(), grey);
+        professor = new Room(DescriptionRoom.PROFESSOR.toString(), code5);
         computingLab = new Room(DescriptionRoom.COMPUTINGLAB.toString());
         goAttic = new Room(DescriptionRoom.ATTICUP.toString());
-        class2 = new Room(DescriptionRoom.CLASS.toString());
+        class2 = new Room(DescriptionRoom.CLASS.toString(), black);
         class3 = new Room(DescriptionRoom.CLASS.toString());
         class4 = new Room(DescriptionRoom.CLASS.toString());
         class5 = new Room(DescriptionRoom.CLASS.toString());
 
 
         attic = new Room(DescriptionRoom.ATTIC.toString(), null);
-        secretRoom = new Room(DescriptionRoom.SECRETROOM.toString(), yellow);
+        secretRoom = new Room(DescriptionRoom.SECRETROOM.toString(), red);
         corridor10 = new Room(DescriptionRoom.CORRIDOR.toString());
         corridor11 = new Room(DescriptionRoom.CORRIDOR.toString());
-        stock1 = new Room(DescriptionRoom.STOCK.toString());
+        stock1 = new Room(DescriptionRoom.STOCK.toString(), pink);
         stock2 = new Room(DescriptionRoom.STOCK.toString());
         stock3 = new Room(DescriptionRoom.STOCKSC.toString());
 
 
 
         // initialise room exits
-        hall1.setExit(north,outside);
+        hall1.setExit(north,outside, dclose, green, red);
         hall1.setExit(south,corridor1);
         hall1.setExit(west,pub);
         hall1.setExit(east,corridor6);
@@ -157,32 +166,30 @@ public class Game {
 
         corridor2.setExit(north, corridor1);
         corridor2.setExit(south, meeting2);
-        corridor2.setExit(west, meeting1);
+        corridor2.setExit(west, meeting1, close, black);
         corridor2.setExit(east, corridor3);
 
         corridor3.setExit(north, garden);
-        corridor3.setExit(south, musicClass);
+        corridor3.setExit(south, musicClass, close, square);
         corridor3.setExit(west, corridor2);
         corridor3.setExit(east, hall2);
 
         corridor4.setExit(north, corridor5);
         corridor4.setExit(south, hall2);
         corridor4.setExit(west, garden);
-        corridor4.setExit(east, theaterClass);
 
         corridor5.setExit(north, veranda1);
         corridor5.setExit(south, corridor4);
         corridor5.setExit(west, corridor6);
         corridor5.setExit(east, theater);
 
-        corridor6.setExit(north, botanicClass);
         corridor6.setExit(south, garden);
         corridor6.setExit(west, hall1);
         corridor6.setExit(east, corridor5);
 
         corridor7.setExit(north, hall3);
         corridor7.setExit(south, corridor8);
-        corridor7.setExit(west, amphi);
+        corridor7.setExit(west, amphi, code, code5);
         corridor7.setExit(east, upGarden);
 
         corridor8.setExit(north, corridor7);
@@ -208,27 +215,25 @@ public class Game {
         garden.setExit(up, upGarden);
 
         veranda1.setExit(south, corridor3);
-        veranda1.setExit(east, veranda2);
-        veranda1.setExit(west, botanicClass);
+        veranda1.setExit(east, veranda2, close, yellow);
+        veranda1.setExit(west, botanicClass, close, blue);
 
         veranda2.setExit(west, veranda1);
 
         botanicClass.setExit(east, veranda1);
-        botanicClass.setExit(south, corridor6);
 
         pubReserve.setExit(east, pub);
 
-        theaterClass.setExit(west, corridor4);
         theaterClass.setExit(north, theater);
 
         bookshelf.setExit(west, hall2);
-        bookshelf.setExit(south, direcBookshelf);
+        bookshelf.setExit(south, direcBookshelf, close, grey);
 
         meeting1.setExit(east, corridor2);
 
         meeting2.setExit(north, corridor2);
 
-        restaurant.setExit(west, kitchen);
+        restaurant.setExit(west, kitchen, code, code4);
         restaurant.setExit(east, corridor1);
 
         kitchen.setExit(east, restaurant);
@@ -239,7 +244,7 @@ public class Game {
         hall3.setExit(down, hall2);
 
         hall4.setExit(north, computingLab);
-        hall4.setExit(south, printer);
+        hall4.setExit(south, printer, code, code2);
         hall4.setExit(west, corridor9);
         hall4.setExit(east, class4);
         hall4.setExit(down, hall2);
@@ -266,8 +271,9 @@ public class Game {
         stock2.setExit(north, corridor11);
 
         stock3.setExit(west, corridor11);
+        stock3.setExit(south, secretRoom, hide, pink);
 
-        corridor10.setExit(south, stock1);
+        corridor10.setExit(south, stock1, close, violet);
         corridor10.setExit(west, attic);
         corridor10.setExit(east, corridor11);
 
@@ -286,8 +292,8 @@ public class Game {
         class5.setExit(west, hall3);
 
         theater.setExit(west, corridor5);
-        theater.setExit(east, backTheater);
-        theater.setExit(south, theaterClass);
+        theater.setExit(east, backTheater, code, code1);
+        theater.setExit(south, theaterClass, close, coral);
         theater.setExit(up, balcony);
 
         backTheater.setExit(west, theater);
@@ -295,23 +301,23 @@ public class Game {
         musicClass.setExit(north, corridor3);
 
         pub.setExit(east, hall1);
-        pub.setExit(west, pubReserve);
+        pub.setExit(west, pubReserve, code , code3);
 
-        computingLab.setExit(north, directLab);
+        computingLab.setExit(north, directLab, close, white);
         computingLab.setExit(south, hall4);
         computingLab.setExit(east, elecBay);
 
         balcony.setExit(down, theater);
 
         secretariat.setExit(east, corridor8);
-        secretariat.setExit(south, directory);
+        secretariat.setExit(south, directory, dclose, brown, orange);
 
         directory.setExit(north, secretariat);
 
         attic.setExit(down, goAttic);
         attic.setExit(east, corridor10);
 
-        secretRoom.setExit(north, stock3);
+        secretRoom.setExit(north, stock3, close, pink);
 
         outside.setExit(south, hall1);
 
@@ -625,12 +631,12 @@ public class Game {
             System.out.print(">");
             String str = sc.nextLine();
             if (str.equals("fr")) {
-                language = new String("fr");
-                country = new String("FR");
+                language = "fr";
+                country = "FR";
                 i = 0;
             } else if (str.equals("en")) {
-                language = new String("en");
-                country = new String("US");
+                language = "en";
+                country = "US";
                 i=0;
             } else {
                 System.out.println("Language don't exist / Cette langue n'existe pas");
