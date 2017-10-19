@@ -21,6 +21,7 @@ public class Room {
     private Key key;
     private ArrayList<Door> doors;
     private boolean move;
+    private boolean light;
 
     /**
      * Create a room described "description". Initially, it has
@@ -29,18 +30,20 @@ public class Room {
      * @param description The room's description.
      */
 
-    public Room(String description)    {
+    public Room(String description, boolean light)    {
         this.description = description;
         this.key = null;
         doors = new ArrayList<>();
         this.move = false;
+        this.light = light;
     }
 
-    public Room(String description,Key key)    {
+    public Room(String description,Key key, boolean light)    {
         this.description = description;
         this.key = key;
         doors = new ArrayList<>();
         this.move = false;
+        this.light = light;
     }
 
     public Door getDoor(String direction){
@@ -143,6 +146,7 @@ public class Room {
      */
     public String getLongDescription(){
         String testkey = Text.NOTHING.toString();
+        String onOff;
         if(key != null){
             if(Command.isNumeric(key.getCouleur())) {
                 testkey = Text.CODE.toString()+key.getCouleur();
@@ -151,8 +155,22 @@ public class Room {
                 testkey = Text.KEY.toString()+key.getCouleur();
             }
         }
-        return Text.YOUARE.toString() + description + " \n" +
-                Text.LISTOBJECT.toString()+ testkey +"\n"+ getExitString();
+        if(!light){
+            return Text.INBLACK.toString();
+        }
+        else{
+            return Text.YOUARE.toString() + description + " \n" +
+                    Text.LISTOBJECT.toString()+ testkey +"\n"+ getExitString();
+        }
+
+    }
+
+    public boolean isLight() {
+        return light;
+    }
+
+    public void setLight(boolean light) {
+        this.light = light;
     }
 
     public String getDescription(){

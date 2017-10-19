@@ -49,7 +49,10 @@ public class Game {
     private static String country;
     private static Locale currentLocale;
     public static ResourceBundle messages;
-    public Monster monster;
+    private Monster monster2;
+    private Monster monster1;
+    private Person person;
+    private boolean finished;
     /**
      * Create the game and initialise its internal map.
      */
@@ -57,7 +60,9 @@ public class Game {
         createKey();
         createInventory();
         createRooms();
-        monster = new Monster(restaurant);
+        monster1 = new Monster(restaurant);
+        monster2 = new Monster(elecBay);
+        person = new Person();
         parser = new Parser();
         parser2 = new Parser();
     }
@@ -95,62 +100,62 @@ public class Game {
 
 
         // create the rooms
-        outside = new Room(DescriptionRoom.OUTSIDE.toString());
-        hall1 = new Room(DescriptionRoom.HALL.toString());
-        hall2 = new Room(DescriptionRoom.HALL.toString());
-        corridor1 = new Room(DescriptionRoom.CORRIDOR.toString());
-        corridor2 = new Room(DescriptionRoom.CORRIDOR.toString());
-        corridor3 = new Room(DescriptionRoom.CORRIDOR.toString());
-        corridor4 = new Room(DescriptionRoom.CORRIDOR.toString());
-        corridor5 = new Room(DescriptionRoom.CORRIDOR.toString());
-        corridor6 = new Room(DescriptionRoom.CORRIDOR.toString());
-        theater = new Room(DescriptionRoom.THEATER.toString());
-        backTheater = new Room(DescriptionRoom.BACKTHEATER.toString(), violet);
-        pub = new Room(DescriptionRoom.PUB.toString(), square);
-        pubReserve = new Room(DescriptionRoom.PUBRESERVE.toString(), orange);
-        botanicClass = new Room(DescriptionRoom.BOTANICCLASS.toString(), yellow);
-        veranda1 = new Room(DescriptionRoom.VERANDA.toString());
-        veranda2 = new Room(DescriptionRoom.VERANDA.toString(), code4);
-        theaterClass = new Room(DescriptionRoom.THEATERCLASS.toString(), blue);
-        bookshelf = new Room(DescriptionRoom.BOOKSHELF.toString());
-        direcBookshelf = new Room(DescriptionRoom.DIRECBOOKSHELF.toString(), code1);
-        restaurant = new Room(DescriptionRoom.RESTAURANT.toString());
-        kitchen = new Room(DescriptionRoom.KITCHEN.toString(), code3);
-        meeting1 = new Room(DescriptionRoom.MEETING.toString(), white);
-        meeting2 = new Room(DescriptionRoom.MEETING.toString());
-        garden = new Room(DescriptionRoom.GARDEN.toString());
-        musicClass = new Room(DescriptionRoom.MUSICCLASS.toString(), brown);
-        class1 = new Room(DescriptionRoom.CLASS.toString());
+        outside = new Room(DescriptionRoom.OUTSIDE.toString(), true);
+        hall1 = new Room(DescriptionRoom.HALL.toString(), true);
+        hall2 = new Room(DescriptionRoom.HALL.toString(), true);
+        corridor1 = new Room(DescriptionRoom.CORRIDOR.toString(), true);
+        corridor2 = new Room(DescriptionRoom.CORRIDOR.toString(), true);
+        corridor3 = new Room(DescriptionRoom.CORRIDOR.toString(), true);
+        corridor4 = new Room(DescriptionRoom.CORRIDOR.toString(), true);
+        corridor5 = new Room(DescriptionRoom.CORRIDOR.toString(), true);
+        corridor6 = new Room(DescriptionRoom.CORRIDOR.toString(), true);
+        theater = new Room(DescriptionRoom.THEATER.toString(), true);
+        backTheater = new Room(DescriptionRoom.BACKTHEATER.toString(), violet, false);
+        pub = new Room(DescriptionRoom.PUB.toString(), square, true);
+        pubReserve = new Room(DescriptionRoom.PUBRESERVE.toString(), orange, false);
+        botanicClass = new Room(DescriptionRoom.BOTANICCLASS.toString(), yellow, false);
+        veranda1 = new Room(DescriptionRoom.VERANDA.toString(), true);
+        veranda2 = new Room(DescriptionRoom.VERANDA.toString(), code4, true);
+        theaterClass = new Room(DescriptionRoom.THEATERCLASS.toString(), blue, false);
+        bookshelf = new Room(DescriptionRoom.BOOKSHELF.toString(), false);
+        direcBookshelf = new Room(DescriptionRoom.DIRECBOOKSHELF.toString(), code1, false);
+        restaurant = new Room(DescriptionRoom.RESTAURANT.toString(), true);
+        kitchen = new Room(DescriptionRoom.KITCHEN.toString(), code3, false);
+        meeting1 = new Room(DescriptionRoom.MEETING.toString(), white, false);
+        meeting2 = new Room(DescriptionRoom.MEETING.toString(), false);
+        garden = new Room(DescriptionRoom.GARDEN.toString(), true);
+        musicClass = new Room(DescriptionRoom.MUSICCLASS.toString(), brown, true);
+        class1 = new Room(DescriptionRoom.CLASS.toString(), false);
 
-        balcony = new Room(DescriptionRoom.BALCONY.toString());
-        secretariat = new Room(DescriptionRoom.SECRETARIAT.toString());
-        directory = new Room(DescriptionRoom.DIRECTORY.toString(),green);
-        corridor7 = new Room(DescriptionRoom.CORRIDOR.toString());
-        corridor8 = new Room(DescriptionRoom.CORRIDOR.toString());
-        corridor9 = new Room(DescriptionRoom.CORRIDOR.toString());
-        hall3 = new Room(DescriptionRoom.HALL.toString());
-        hall4 = new Room(DescriptionRoom.HALL.toString());
-        directLab = new Room(DescriptionRoom.DIRECLAB.toString(), code2);
-        upGarden = new Room(DescriptionRoom.UPGARDEN.toString());
-        elecBay = new Room(DescriptionRoom.ELECBAY.toString());
-        amphi = new Room(DescriptionRoom.AMPHI.toString(), coral);
-        printer = new Room(DescriptionRoom.PRINTER.toString(), grey);
-        professor = new Room(DescriptionRoom.PROFESSOR.toString(), code5);
-        computingLab = new Room(DescriptionRoom.COMPUTINGLAB.toString());
-        goAttic = new Room(DescriptionRoom.ATTICUP.toString());
-        class2 = new Room(DescriptionRoom.CLASS.toString(), black);
-        class3 = new Room(DescriptionRoom.CLASS.toString());
-        class4 = new Room(DescriptionRoom.CLASS.toString());
-        class5 = new Room(DescriptionRoom.CLASS.toString());
+        balcony = new Room(DescriptionRoom.BALCONY.toString(), false);
+        secretariat = new Room(DescriptionRoom.SECRETARIAT.toString(), true);
+        directory = new Room(DescriptionRoom.DIRECTORY.toString(),green, false);
+        corridor7 = new Room(DescriptionRoom.CORRIDOR.toString(), true);
+        corridor8 = new Room(DescriptionRoom.CORRIDOR.toString(),true);
+        corridor9 = new Room(DescriptionRoom.CORRIDOR.toString(), true);
+        hall3 = new Room(DescriptionRoom.HALL.toString(), true);
+        hall4 = new Room(DescriptionRoom.HALL.toString(), true);
+        directLab = new Room(DescriptionRoom.DIRECLAB.toString(), code2, false);
+        upGarden = new Room(DescriptionRoom.UPGARDEN.toString(), true);
+        elecBay = new Room(DescriptionRoom.ELECBAY.toString(), false);
+        amphi = new Room(DescriptionRoom.AMPHI.toString(), coral, false);
+        printer = new Room(DescriptionRoom.PRINTER.toString(), grey, false);
+        professor = new Room(DescriptionRoom.PROFESSOR.toString(), code5, true);
+        computingLab = new Room(DescriptionRoom.COMPUTINGLAB.toString(), false);
+        goAttic = new Room(DescriptionRoom.ATTICUP.toString(), false);
+        class2 = new Room(DescriptionRoom.CLASS.toString(), black, false);
+        class3 = new Room(DescriptionRoom.CLASS.toString(), false);
+        class4 = new Room(DescriptionRoom.CLASS.toString(), false);
+        class5 = new Room(DescriptionRoom.CLASS.toString(), false);
 
 
-        attic = new Room(DescriptionRoom.ATTIC.toString(), null);
-        secretRoom = new Room(DescriptionRoom.SECRETROOM.toString(), red);
-        corridor10 = new Room(DescriptionRoom.CORRIDOR.toString());
-        corridor11 = new Room(DescriptionRoom.CORRIDOR.toString());
-        stock1 = new Room(DescriptionRoom.STOCK.toString(), pink);
-        stock2 = new Room(DescriptionRoom.STOCK.toString());
-        stock3 = new Room(DescriptionRoom.STOCKSC.toString());
+        attic = new Room(DescriptionRoom.ATTIC.toString(), false);
+        secretRoom = new Room(DescriptionRoom.SECRETROOM.toString(), red, false);
+        corridor10 = new Room(DescriptionRoom.CORRIDOR.toString(), true);
+        corridor11 = new Room(DescriptionRoom.CORRIDOR.toString(), false);
+        stock1 = new Room(DescriptionRoom.STOCK.toString(), pink, true);
+        stock2 = new Room(DescriptionRoom.STOCK.toString(), false);
+        stock3 = new Room(DescriptionRoom.STOCKSC.toString(), false);
 
 
 
@@ -335,11 +340,15 @@ public class Game {
         // Enter the main command loop.  Here we repeatedly read commands and
         // execute them until the game is over.
 
-        boolean finished = false;
+        finished = false;
         while (! finished) {
             Command command = parser.getCommand();
             finished = processCommand(command);
             if (currentRoom.equals(outside)){
+                finished = processCommand(new Command(CommandWord.QUIT.toString(), null));
+            }
+            if (person.getLife()==0){
+                System.out.println(Text.DIE.toString());
                 finished = processCommand(new Command(CommandWord.QUIT.toString(), null));
             }
         }
@@ -387,6 +396,10 @@ public class Game {
             unlock(command);
         else if(CommandWord.CODE.equals(commandWords))
             code(command);
+        else if(CommandWord.ON.equals(commandWords))
+            on();
+        else if(CommandWord.OFF.equals(commandWords))
+            off();
         return wantToQuit;
     }
 
@@ -573,8 +586,15 @@ public class Game {
             Door door = currentRoom.getDoor(direction);
             if(door.getOpen().equals(StateDoor.OPEN.toString())) {
                 currentRoom = nextRoom;
-                monster.move();
-                printLocationInfo();
+                monster1.move();
+                monster2.move();
+                if(currentRoom.isLight()){
+                    damage();
+                }
+                if(person.getLife()!=0){
+                    printLocationInfo();
+                }
+
             }
             else{
                 System.out.println(Text.NODOOR.toString());
@@ -624,6 +644,40 @@ public class Game {
             System.out.println(Text.NOTHINGTAKE.toString());
         }
 
+    }
+
+    private void damage(){
+        if(monster2.getPosition().equals(currentRoom) || monster1.getPosition().equals(currentRoom)){
+            person.looseLife();
+            System.out.println(Text.AIE.toString());
+            if(person.getLife()==0){
+                System.out.println(Text.DIE.toString());
+                finished = true;
+            }
+        }
+    }
+
+    private void on(){
+        if (currentRoom.isLight()){
+            System.out.println(Text.ONALREADY.toString());
+            damage();
+        }
+        else{
+            currentRoom.setLight(true);
+            System.out.println(Text.ON.toString());
+
+            printLocationInfo();
+        }
+    }
+
+    private void off(){
+        if (!currentRoom.isLight()){
+            System.out.println(Text.OFFALREADY.toString());
+        }
+        else{
+            currentRoom.setLight(false);
+            System.out.println(Text.OFF.toString());
+        }
     }
 
     private static void setLanguage(){

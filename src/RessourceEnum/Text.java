@@ -29,7 +29,16 @@ public enum Text {
     CODE(Game.messages.getString("codeT")),
     KEY(Game.messages.getString("keyT")),
     YOUTAKE(Game.messages.getString("youtake")),
-    INYOURBAG(Game.messages.getString("inyourbag"));
+    AIE(Game.messages.getString("aie")),
+    DIE(Game.messages.getString("die")),
+    ONALREADY(Game.messages.getString("onAlready")),
+    OFFALREADY(Game.messages.getString("offAlready")),
+    ON(Game.messages.getString("onRoom")),
+    OFF(Game.messages.getString("offRoom")),
+    INYOURBAG(Game.messages.getString("inyourbag")),
+    INBLACK(Game.messages.getString("inblack"));
+
+
 
 
     private String mot ="";

@@ -11,7 +11,9 @@ public enum CommandWord {
     UNKNOWN(Game.messages.getString("unknown")),
     TAKE(Game.messages.getString("take")),
     UNLOCK(Game.messages.getString("unlock")),
-    CODE(Game.messages.getString("code"));
+    CODE(Game.messages.getString("code")),
+    OFF(Game.messages.getString("off")),
+    ON(Game.messages.getString("on"));
 
     private String mot ="";
 

@@ -12,6 +12,9 @@ public class Monster {
         ArrayList<Door> exist = position.getAllExist();
         int nbrAlea = 0 + (int)(Math.random() * (exist.size() - 0));
         position = exist.get(nbrAlea).getRoom();
-        System.out.println("Monstre : "+position.getDescription());
+    }
+
+    public Room getPosition(){
+        return position;
     }
 }
