@@ -155,12 +155,20 @@ public class Room {
                 Text.LISTOBJECT.toString()+ testkey +"\n"+ getExitString();
     }
 
+    public String getDescription(){
+        return description;
+    }
+
     public Key getKey(){
         return key;
     }
 
     public void setKey(){
         key = null;
+    }
+
+    public ArrayList getAllExist(){
+        return doors;
     }
 
 }

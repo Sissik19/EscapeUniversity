@@ -49,6 +49,7 @@ public class Game {
     private static String country;
     private static Locale currentLocale;
     public static ResourceBundle messages;
+    public Monster monster;
     /**
      * Create the game and initialise its internal map.
      */
@@ -56,6 +57,7 @@ public class Game {
         createKey();
         createInventory();
         createRooms();
+        monster = new Monster(restaurant);
         parser = new Parser();
         parser2 = new Parser();
     }
@@ -571,6 +573,7 @@ public class Game {
             Door door = currentRoom.getDoor(direction);
             if(door.getOpen().equals(StateDoor.OPEN.toString())) {
                 currentRoom = nextRoom;
+                monster.move();
                 printLocationInfo();
             }
             else{
