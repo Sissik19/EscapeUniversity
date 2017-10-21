@@ -362,8 +362,9 @@ public class Game {
     private void printWelcome() {
         System.out.println();
         System.out.println(Text.WELCOME.toString());
-        printHelp();
+        System.out.println(CommandWords.allCommand());
         System.out.println();
+        System.out.println(Text.WAKEUP.toString());
         printLocationInfo();
     }
 
@@ -412,9 +413,19 @@ public class Game {
      * command words.
      */
     private void printHelp() {
-        CommandWords commandWords = new CommandWords();
         System.out.println(Text.HELP.toString());
-        System.out.println(commandWords.allCommand());
+        System.out.println(printHelpCommand());
+
+    }
+    private String printHelpCommand(){
+        String help = "";
+        for (CommandWord word : CommandWord.values()) {
+            if(!word.equals(CommandWord.UNKNOWN)) {
+                String command ="h"+word.toString();
+                help+=Game.messages.getString(command)+"\n";
+            }
+        }
+        return help;
     }
 
     private void unlock(Command command){

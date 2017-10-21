@@ -56,7 +56,7 @@ public class CommandWords {
      * Permit to have all possible commands
      * @return the String with all commands
      */
-    public String allCommand(){
+    public static String allCommand(){
         String listCommand = "";
         listCommand+= Text.YOURCOMMAND.toString();
         for (CommandWord word : CommandWord.values()) {
