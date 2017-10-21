@@ -4,7 +4,7 @@ public class Person {
     int life;
 
     public Person(){
-        life = 1;
+        life = 2;
     }
 
     public void looseLife(){

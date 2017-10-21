@@ -2,7 +2,7 @@ package Instances;
 
 import java.util.ArrayList;
 
-public class Monster {
+public class Monster extends Thread{
     Room position;
     public Monster (Room room){
         position = room;

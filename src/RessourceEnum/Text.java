@@ -36,7 +36,8 @@ public enum Text {
     ON(Game.messages.getString("onRoom")),
     OFF(Game.messages.getString("offRoom")),
     INYOURBAG(Game.messages.getString("inyourbag")),
-    INBLACK(Game.messages.getString("inblack"));
+    INBLACK(Game.messages.getString("inblack")),
+    FOOTSTEPS(Game.messages.getString("walk"));
 
 
 
